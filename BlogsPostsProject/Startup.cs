@@ -25,6 +25,7 @@ namespace BlogsPostsProject
         {
             services.AddDbContext<ForumContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ForumContext")));
+            services.AddTransient<IBlogRepository, BlogRepository>();
             services.AddMvc();
         }
 
@@ -47,7 +48,7 @@ namespace BlogsPostsProject
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Blogs}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

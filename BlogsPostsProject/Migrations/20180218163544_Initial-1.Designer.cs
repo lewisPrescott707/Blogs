@@ -11,8 +11,8 @@ using System;
 namespace BlogsPostsProject.Migrations
 {
     [DbContext(typeof(ForumContext))]
-    [Migration("20180215191445_Initial")]
-    partial class Initial
+    [Migration("20180218163544_Initial-1")]
+    partial class Initial1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

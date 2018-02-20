@@ -9,7 +9,7 @@ namespace BlogsPostsProject.Models
     public interface IBlogRepository
     {
         Blog Add(Blog blog);
-        Task<Blog> AddAsynAsync(Blog blog);
+        Task<Blog> AddAsync(Blog blog);
         int Count();
         Task<int> CountAsync();
         void Delete(Blog entity);

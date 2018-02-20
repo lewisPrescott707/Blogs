@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogsPostsProject.Models
@@ -22,7 +23,7 @@ namespace BlogsPostsProject.Models
             return blog;
         }
 
-        public async Task<Blog> AddAsynAsync(Blog blog)
+        public async Task<Blog> AddAsync(Blog blog)
         {
             _context.Add(blog);
             await _context.SaveChangesAsync();
@@ -39,15 +40,15 @@ namespace BlogsPostsProject.Models
             throw new NotImplementedException();
         }
 
-        public void Delete(Blog entity)
+        public void Delete(Blog blog)
         {
-            _context.Remove(entity);
+            _context.Remove(blog);
             _context.SaveChanges();
         }
 
-        public async Task<int> DeleteAsync(Blog entity)
+        public async Task<int> DeleteAsync(Blog blog)
         {
-            _context.Remove(entity);
+            _context.Remove(blog);
             return await _context.SaveChangesAsync();
         }
 
