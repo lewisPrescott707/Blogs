@@ -12,8 +12,8 @@ namespace BlogsPostsProject.Models
         Task<Blog> AddAsync(Blog blog);
         int Count();
         Task<int> CountAsync();
-        void Delete(Blog entity);
-        Task<int> DeleteAsync(Blog entity);
+        void Delete(Blog blog);
+        Task<int> DeleteAsync(Blog blog);
         void Dispose();
         Blog Find(Expression<Func<Blog, bool>> match);
         ICollection<Blog> FindAll(Expression<Func<Blog, bool>> match);

@@ -26,6 +26,7 @@ namespace BlogsPostsProject
             services.AddDbContext<ForumContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ForumContext")));
             services.AddTransient<IBlogRepository, BlogRepository>();
+            services.AddTransient<IPostRepository, PostRepository>();
             services.AddMvc();
         }
 

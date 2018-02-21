@@ -8,21 +8,20 @@ namespace BlogsPostsProject.Models
 {
     public class ForumContext : DbContext
     {
-        public ForumContext(DbContextOptions<ForumContext> options):
+        public ForumContext(DbContextOptions options):
             base(options)
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<Post>()
-                .HasOne(b => b.Blog)
-                .WithMany(p => p.Posts)
-                .IsRequired();
-            base.OnModelCreating(builder);
-        }
-
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Blog>()
+                .HasMany(p => p.Posts)
+                .WithOne().HasForeignKey(b => b.PostId);
+            base.OnModelCreating(builder);
+        }
     }
 }

@@ -42,10 +42,11 @@ namespace BlogsPostsProject.Migrations
 
             modelBuilder.Entity("BlogsPostsProject.Models.Post", b =>
                 {
-                    b.Property<int>("PostId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("PostId");
 
                     b.Property<int>("BlogId");
+
+                    b.Property<int?>("BlogId1");
 
                     b.Property<string>("Content");
 
@@ -53,7 +54,7 @@ namespace BlogsPostsProject.Migrations
 
                     b.HasKey("PostId");
 
-                    b.HasIndex("BlogId");
+                    b.HasIndex("BlogId1");
 
                     b.ToTable("Posts");
                 });
@@ -61,8 +62,12 @@ namespace BlogsPostsProject.Migrations
             modelBuilder.Entity("BlogsPostsProject.Models.Post", b =>
                 {
                     b.HasOne("BlogsPostsProject.Models.Blog", "Blog")
+                        .WithMany()
+                        .HasForeignKey("BlogId1");
+
+                    b.HasOne("BlogsPostsProject.Models.Blog")
                         .WithMany("Posts")
-                        .HasForeignKey("BlogId")
+                        .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
